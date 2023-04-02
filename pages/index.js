@@ -2,26 +2,13 @@ import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Link from 'next/link';
 
-import { getSortedPostsData } from '../lib/posts';
-
-export async function getServerSideProps() {
-  let allPostsData = getSortedPostsData();
-  console.log(allPostsData);
-  return {
-    props: {
-      allPostsData,
-    },
-  };
-}
-
-export default function Home({allPostsData}) {
+export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
         <title>Create Next App with BuntyWP</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
       <main>
         <h1 className={styles.title}>
           BuntyWP is Learning <a href="https://nextjs.org">Next.js!</a>
@@ -36,6 +23,12 @@ export default function Home({allPostsData}) {
         </p>
 
         <div className={styles.grid}>
+
+          <Link href="/blogs" className={styles.card}>
+            <h3>Blogs &rarr;</h3>
+            <p>List of blogs from WordPress using API.</p>
+          </Link>
+
           <a href="https://nextjs.org/docs" className={styles.card}>
             <h3>Documentation &rarr;</h3>
             <p>Find in-depth information about Next.js features and API.</p>
@@ -65,7 +58,6 @@ export default function Home({allPostsData}) {
           </a>
         </div>
       </main>
-
 
       <footer>
         <a
