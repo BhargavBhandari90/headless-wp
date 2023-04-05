@@ -13,13 +13,16 @@ export async function getStaticProps() {
 }
 
 export default function Blogs({allPostsData}) {
-    console.log(allPostsData);
     return (
         <div>
             <h1>Blogs</h1>
             <ul>
             { allPostsData.map( ( post ) =>  (
-                <li key={post.id}>{post.title.rendered}</li>
+                <li key={post.id}>
+                    <Link href={'/blog/'+post.slug}>
+                        {post.title.rendered}
+                    </Link>
+                </li>
             ) ) }
             </ul>
             <Link href="/">Go to Home!</Link>
