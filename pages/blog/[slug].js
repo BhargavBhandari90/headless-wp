@@ -1,3 +1,4 @@
+import Layout from "../../components/layout";
 import { getAllBlogSlugs, getBlogData } from "../../lib/wordpress";
 
 
@@ -30,10 +31,10 @@ export default function Post({postData}) {
     const post = postData[0];
 
     return (
-        <div>
+        <Layout>
             <h1>{post.title.rendered}</h1>
             {/* <div>{post.content.rendered}</div> */}
             <div dangerouslySetInnerHTML={{ __html: post.content.rendered }} />
-        </div>
+        </Layout>
     );
 }

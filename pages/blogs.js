@@ -1,3 +1,4 @@
+import Layout from '../components/layout';
 import { getBlogs } from '../lib/wordpress';
 import Link from 'next/link';
 
@@ -14,7 +15,7 @@ export async function getStaticProps() {
 
 export default function Blogs({allPostsData}) {
     return (
-        <div>
+        <Layout>
             <h1>Blogs</h1>
             <ul>
             { allPostsData.map( ( post ) =>  (
@@ -26,6 +27,6 @@ export default function Blogs({allPostsData}) {
             ) ) }
             </ul>
             <Link href="/">Go to Home!</Link>
-        </div>
+        </Layout>
     );
 }
