@@ -58,9 +58,7 @@ export default function Blogs({allPostsData}) {
                     ) ) }
                     </div>
                 </div>
-                </section>
-
-
+            </section>
             <Link href="/">Go to Home!</Link>
         </Layout>
     );
