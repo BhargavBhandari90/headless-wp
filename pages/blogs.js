@@ -21,7 +21,7 @@ export default function Blogs({allPostsData}) {
                 <div className="container px-5 py-24 mx-auto">
                     <div className="flex flex-wrap -m-4">
                     { allPostsData.map( ( post ) =>  (
-                        <div className="p-4 md:w-1/3">
+                        <div key={post.id} className="p-4 md:w-1/3">
                             <div className="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
                             <img
                                 className="lg:h-48 md:h-36 w-full object-cover object-center"
@@ -32,9 +32,7 @@ export default function Blogs({allPostsData}) {
                                 <h1 className="title-font text-lg font-medium text-white mb-3">
                                 {post.title.rendered}
                                 </h1>
-                                <p className="leading-relaxed mb-3">
-                                    <div dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
-                                </p>
+                                <div className="leading-relaxed mb-3" dangerouslySetInnerHTML={{ __html: post.excerpt.rendered }} />
                                 <div className="flex items-center flex-wrap ">
                                 <Link href={"blog/" + post.slug} className="text-indigo-400 inline-flex items-center md:mb-2 lg:mb-0">
                                     Learn More
