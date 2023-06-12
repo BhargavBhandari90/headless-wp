@@ -1,5 +1,8 @@
 import styles from './layout.module.css';
 import Header from './header';
+import { useEffect, useState } from "react";
+import axios from "axios";
+
 
 export default function Layout({ children }) {
 
@@ -20,11 +23,9 @@ export default function Layout({ children }) {
 			});
 	},[]);
 
-	console.log(siteInfo);
-
     return (
         <>
-            <Header />
+            <Header sitedata={siteInfo} />
             <div>{children}</div>
         </>
     );
