@@ -1,3 +1,4 @@
+import Header from "../../components/header";
 import Layout from "../../components/layout";
 import { getAllBlogSlugs, getBlogData } from "../../lib/wordpress";
 
@@ -32,6 +33,7 @@ export default function Post({postData}) {
 
     return (
         <Layout>
+            <Header />
             <section className="text-gray-400 bg-gray-900 body-font">
               <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
                 <img
