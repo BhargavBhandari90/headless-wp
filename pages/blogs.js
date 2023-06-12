@@ -16,7 +16,6 @@ export async function getStaticProps() {
 export default function Blogs({allPostsData}) {
     return (
         <Layout>
-            <h1>Blogs</h1>
             <section className="text-gray-400 bg-gray-900 body-font">
                 <div className="container px-5 py-24 mx-auto">
                     <div className="flex flex-wrap -m-4">
