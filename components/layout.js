@@ -1,5 +1,6 @@
 import styles from './layout.module.css';
 import Header from './header';
+import Footer from './footer';
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -27,6 +28,7 @@ export default function Layout({ children }) {
         <>
             <Header sitedata={siteInfo} />
             <div>{children}</div>
+			<Footer sitedata={siteInfo} />
         </>
     );
 }
