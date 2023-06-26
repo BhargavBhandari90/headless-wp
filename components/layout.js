@@ -1,6 +1,5 @@
 import Header from './header';
 import styles from './layout.module.css';
-import Header from './header';
 import Footer from './footer';
 import { useEffect, useState } from "react";
 import axios from "axios";
