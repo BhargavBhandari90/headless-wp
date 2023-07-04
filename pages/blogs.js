@@ -1,6 +1,7 @@
 import Layout from '../components/layout';
 import { getBlogs } from '../lib/wordpress';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export async function getStaticProps() {
 
@@ -14,6 +15,7 @@ export async function getStaticProps() {
 }
 
 export default function Blogs({allPostsData}) {
+
     return (
         <Layout>
             <section className="text-gray-400 bg-gray-900 body-font">
@@ -22,11 +24,15 @@ export default function Blogs({allPostsData}) {
                     { allPostsData.map( ( post ) =>  (
                         <div key={post.id} className="p-4 md:w-1/3">
                             <div className="h-full border-2 border-gray-800 rounded-lg overflow-hidden">
-                            <img
+
+                            <Image
                                 className="lg:h-48 md:h-36 w-full object-cover object-center"
-                                src="https://dummyimage.com/720x400"
+                                src={post.featured_image_url}
                                 alt="blog"
+                                width={720}
+                                height={400}
                             />
+
                             <div className="p-6">
                                 <h1 className="title-font text-lg font-medium text-white mb-3">
                                 {post.title.rendered}

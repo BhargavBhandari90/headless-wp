@@ -1,5 +1,6 @@
 import Layout from "../../components/layout";
 import { getAllBlogSlugs, getBlogData } from "../../lib/wordpress";
+import Image from 'next/image';
 
 
 // Set the path
@@ -34,10 +35,12 @@ export default function Post({postData}) {
         <Layout>
             <section className="text-gray-400 bg-gray-900 body-font">
               <div className="container mx-auto flex px-5 py-24 items-center justify-center flex-col">
-                <img
+                <Image
                   className="lg:w-2/6 md:w-3/6 w-5/6 mb-10 object-cover object-center rounded"
                   alt="hero"
-                  src="https://dummyimage.com/720x600"
+                  src={post.featured_image_url}
+                  width={720}
+                  height={400}
                 />
                 <div className="text-center lg:w-2/3 w-full">
                   <h1 className="title-font sm:text-4xl text-3xl mb-4 font-medium text-white">
