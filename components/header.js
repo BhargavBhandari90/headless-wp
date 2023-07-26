@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { signOut } from "next-auth/react";
 
 export default function Header( props ) {
 

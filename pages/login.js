@@ -1,5 +1,6 @@
 import Layout from "../components/layout";
 import { useFormik } from 'formik';
+import { signIn } from "next-auth/react";
 import * as Yup from 'yup';
 
 export default function Login() {
@@ -18,6 +19,15 @@ export default function Login() {
 
         onSubmit: ( data ) => {
             console.log( data );
+
+            const loginData = {
+                username: data.username,
+                password: data.password,
+                callbackUrl: '/',
+            }
+
+            signIn( 'credentials', loginData );
+
         }
 
     });
