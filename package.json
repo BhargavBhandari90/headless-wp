@@ -13,6 +13,7 @@
     "gray-matter": "^4.0.3",
     "html-react-parser": "^3.0.12",
     "next": "13.2.3",
+    "next-auth": "^4.22.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "yup": "^1.2.0"
