@@ -27,8 +27,11 @@ export const authOptions = {
                 const loggeinUser = {
                   name: user.user_display_name,
                   email: user.user_email,
-                  token: user.token,
+                  accessToken: user.token,
                 };
+
+                console.log('loggeinUser',loggeinUser);
+
                 return loggeinUser
               } else {
                 return null;
@@ -39,9 +42,12 @@ export const authOptions = {
 
     callbacks: {
       async jwt({ token, account, profile }) {
+
+        console.log('token',token);
+
         // Persist the OAuth access_token and or the user id to the token right after signin
-        if (token) {
-          token.accessToken = token.token
+        if (account) {
+          token.accessToken = account.accessToken
         }
         return token;
       },
@@ -52,7 +58,7 @@ export const authOptions = {
           session.accessToken = token.accessToken
         }
 
-        return session
+        return session;
       }
     }
 }
