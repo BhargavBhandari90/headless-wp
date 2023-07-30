@@ -16,7 +16,6 @@ export async function getStaticProps() {
 }
 
 export default function Home({homepageData}) {
-  console.log(homepageData);
   return (
     <Layout>
       <section className="text-gray-400 bg-gray-900 body-font">

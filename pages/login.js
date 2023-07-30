@@ -2,8 +2,12 @@ import Layout from "../components/layout";
 import { useFormik } from 'formik';
 import { signIn } from "next-auth/react";
 import * as Yup from 'yup';
+import { useRouter } from 'next/router';
+import toast, { Toaster } from 'react-hot-toast';
 
 export default function Login() {
+
+    const router = useRouter();
 
     const formik = useFormik({
 
@@ -17,16 +21,25 @@ export default function Login() {
             password: Yup.string().required('Please add Password.'),
         }),
 
-        onSubmit: ( data ) => {
-            console.log( data );
+        onSubmit: async( data ) => {
+
+            toast.loading('Logging you in...', {  duration: 1500 });
 
             const loginData = {
                 username: data.username,
                 password: data.password,
                 callbackUrl: '/',
+                redirect: false,
             }
 
-            signIn( 'credentials', loginData );
+            const login = await signIn( 'credentials', loginData );
+
+            if ( login.ok ) {
+                toast.success('Successfully Logged in! Redirecting...');
+                router.push( login.url );
+            } else {
+                toast.error('Login failed.');
+            }
 
         }
 
@@ -80,6 +93,7 @@ export default function Login() {
                         <button className="text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
                             Login
                         </button>
+                        <Toaster />
                     </form>
                     </div>
                 </div>

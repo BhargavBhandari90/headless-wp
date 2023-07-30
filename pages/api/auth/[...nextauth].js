@@ -20,18 +20,17 @@ export const authOptions = {
                 body: JSON.stringify(credentials),
                 headers: { "Content-Type": "application/json" }
               })
-              const user = await res.json()
+              const user = await res.json();
 
               if (user.token) {
                 // Any object returned will be saved in `user` property of the JWT
                 const loggeinUser = { name: user.user_display_name, email: user.user_email };
                 return loggeinUser
               } else {
-
-                return null
+                return null;
               }
             }
-          })
+        })
     ],
 }
 

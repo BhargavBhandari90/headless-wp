@@ -1,7 +1,9 @@
 import Link from "next/link"
-import { signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 
 export default function Header( props ) {
+
+	const userdata = useSession();
 
 	return(
 		<header className="text-gray-400 bg-gray-900 body-font">
@@ -12,7 +14,17 @@ export default function Header( props ) {
 				<nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
 				<Link href="/" className="mr-5 hover:text-white">Home</Link>
 				<Link href="/blogs" className="mr-5 hover:text-white">Blogs</Link>
-				<Link href="/login" className="mr-5 hover:text-white">Login</Link>
+				{ userdata?.data && userdata?.status === 'authenticated'
+
+					? (
+						<Link href="#" onClick={() => signOut({
+							callbackUrl: '/login'
+						})}  className="mr-5 hover:text-white">Logout</Link>
+					) : (
+						<Link href="/login" className="mr-5 hover:text-white">Login</Link>
+					)
+
+				}
 				</nav>
 			</div>
 		</header>
