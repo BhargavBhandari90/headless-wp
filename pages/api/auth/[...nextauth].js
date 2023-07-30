@@ -24,7 +24,11 @@ export const authOptions = {
 
               if (user.token) {
                 // Any object returned will be saved in `user` property of the JWT
-                const loggeinUser = { name: user.user_display_name, email: user.user_email };
+                const loggeinUser = {
+                  name: user.user_display_name,
+                  email: user.user_email,
+                  token: user.token,
+                };
                 return loggeinUser
               } else {
                 return null;
@@ -32,6 +36,25 @@ export const authOptions = {
             }
         })
     ],
+
+    callbacks: {
+      async jwt({ token, account, profile }) {
+        // Persist the OAuth access_token and or the user id to the token right after signin
+        if (token) {
+          token.accessToken = token.token
+        }
+        return token;
+      },
+
+      async session({ session, token, user }) {
+        // Send properties to the client, like an access_token and user id from a provider.
+        if ( token ) {
+          session.accessToken = token.accessToken
+        }
+
+        return session
+      }
+    }
 }
 
 export default NextAuth(authOptions)
