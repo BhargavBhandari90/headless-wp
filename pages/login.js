@@ -23,7 +23,7 @@ export default function Login() {
 
         onSubmit: async( data ) => {
 
-            toast.loading('Logging you in...', {  duration: 1500 });
+            toast.loading('Logging you in...', {  duration: 1000 });
 
             const loginData = {
                 username: data.username,
