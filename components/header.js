@@ -1,5 +1,6 @@
 import Link from "next/link"
 import { useSession, signOut } from "next-auth/react";
+import UserDropdown from "./user-dropdown";
 
 export default function Header( props ) {
 
@@ -19,9 +20,7 @@ export default function Header( props ) {
 				{ userdata?.data && userdata?.status === 'authenticated'
 
 					? (
-						<Link href="#" onClick={() => signOut({
-							callbackUrl: '/login'
-						})}  className="mr-5 hover:text-white">Logout</Link>
+						<UserDropdown />
 					) : (
 						<Link href="/login" className="mr-5 hover:text-white">Login</Link>
 					)
