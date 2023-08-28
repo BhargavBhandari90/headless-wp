@@ -10,10 +10,6 @@ const nextConfig = {
       },
       {
         protocol: "https",
-        hostname: "headless-wp-omega.vercel.app",
-      },
-      {
-        protocol: "https",
         hostname: "dummyimage.com"
       }
     ],
