@@ -33,7 +33,7 @@ export default withAuth(
 
       }
     },
-    secret: process.env.NEXTAUTH_SECRET,
+    secret: process.env.SECRET,
   }
 )
 
