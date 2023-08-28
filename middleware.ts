@@ -33,6 +33,7 @@ export default withAuth(
 
       }
     },
+    secret: process.env.SECRET,
   }
 )
 
